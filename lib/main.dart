@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:udemi/providers/cart.dart';
 import 'package:udemi/providers/products.dart';
 import 'package:udemi/screens/product_detail_screen.dart';
 import 'package:udemi/screens/product_overview_screen.dart';
@@ -13,14 +14,24 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          
+          create: (ctx) => Products(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Cart())
+      ],
       child: MaterialApp(
         home: ProductsOverviewScreen(),
         routes: {
           ProductDetailScreen.routName: (ctx) => ProductDetailScreen(),
         },
-        theme: ThemeData(primaryColor: Colors.purple, accentColor: Colors.orange, fontFamily: 'Lato'),
+        theme: ThemeData(
+            primaryColor: Colors.purple,
+            accentColor: Colors.orange,
+            fontFamily: 'Lato'),
       ),
     );
   }
