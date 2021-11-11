@@ -5,7 +5,6 @@ import 'package:udemi/providers/products.dart';
 import 'package:udemi/widgets/product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
- 
   final bool showFavs;
 
   ProductsGrid(this.showFavs);
@@ -17,15 +16,14 @@ class ProductsGrid extends StatelessWidget {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 3/2,
+        childAspectRatio: 3 / 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),
-      itemBuilder: (BuildContext context, int index) => ChangeNotifierProvider.value(
+      itemBuilder: (BuildContext context, int index) =>
+          ChangeNotifierProvider.value(
         value: products[index],
-        child: ProductItem(
-         
-        ),
+        child: ProductItem(),
       ),
       itemCount: products.length,
       padding: EdgeInsets.all(10),

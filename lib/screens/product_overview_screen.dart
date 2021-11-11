@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:udemi/providers/cart.dart';
 import 'package:udemi/providers/products.dart';
+import 'package:udemi/screens/cart_screen.dart';
+import 'package:udemi/widgets/app_drawer.dart';
 import 'package:udemi/widgets/badge.dart';
 import 'package:udemi/widgets/products_grid.dart';
 
@@ -50,12 +52,15 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                   value: cart.itemCount.toString()),
                   child:IconButton(
                     icon: Icon(Icons.shopping_cart),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(CartScreen.routeName);
+                    },
                   ) ,
                   ),
         ],
       ),
       body: ProductsGrid(_showOnlyFavorites),
+      drawer: AppDrawer(),
     );
   }
 }
